@@ -23,7 +23,10 @@ public class Project {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Zadanie> zadanie2Set;
-@ManyToMany(mappedBy = "projects")
+
+    @ManyToMany(mappedBy = "projects")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
 private Set<User> users = new HashSet<>();
 
 }

@@ -16,9 +16,9 @@ public class DeleteSprint implements Command{
         String id = scanner.nextLine();
         Long sprintId = Long.parseLong(id);
         if(dao.delete(Sprint.class,sprintId)){
-            System.out.println("Usunieto sprint");
+            System.out.println("Usunieto sprint!");
         } else {
-            System.err.println("Nie znalezniono sprintu");
+            System.err.println("Nie znalezniono sprintu!");
         }
     }
 }

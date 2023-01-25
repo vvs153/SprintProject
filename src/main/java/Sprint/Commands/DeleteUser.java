@@ -17,9 +17,9 @@ public class DeleteUser implements Command{
         String id = scanner.nextLine();
         Long userId = Long.parseLong(id);
         if(dao.delete(User.class,userId)){
-            System.out.println("Usunieto uzytkownika");
+            System.out.println("Usunieto uzytkownika!");
         } else {
-            System.err.println("Nie znalezniono uzytkownika");
+            System.err.println("Nie znalezniono uzytkownika!");
         }
     }
 }

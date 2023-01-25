@@ -5,9 +5,8 @@ import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.lang.reflect.Field;
+import java.util.*;
 
 // DataAccessObject - instancja klasy ktora umozliwia manipulowanie danymi w bazie
 // posiada metody curd dla wybranego modelu
@@ -49,6 +48,17 @@ public class DataAccessObject<T> {
         }
         return Optional.empty();
     }
+    public Set<T> search(Class<T> tClass, Long id, Class<?> tClass2){
+        Set<T> set = new TreeSet<>();
+        try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
+            T entity = session.get(tClass,id);
+            //   set.addAll(entity);
+
+        } catch (Exception e) {
+            System.err.println("blad bazy " + e);
+        }
+        return set;
+    }
 
     //Delete
     public boolean delete(Class<T> tClass, Long id) {
@@ -66,6 +76,7 @@ public class DataAccessObject<T> {
         }
         return false;
     }
+
 
     public void update(Class<T> tClass, Long id, T updatingEntity) {
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {

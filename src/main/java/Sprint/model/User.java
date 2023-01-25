@@ -28,10 +28,6 @@ public class User {
     @ManyToMany
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-   @JoinTable(
-            name = "uczestnictwo_w_projekcie",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id")
-    )
+
     private Set<Project> projects = new HashSet<>();
 }

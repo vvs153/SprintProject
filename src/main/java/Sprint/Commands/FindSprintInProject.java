@@ -16,7 +16,7 @@ public class FindSprintInProject implements Command{
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
     @Override
     public String getCommand() {
-        return "5";
+        return "Znajdz sprinty w projekcie";
     }
 
     public FindSprintInProject() {

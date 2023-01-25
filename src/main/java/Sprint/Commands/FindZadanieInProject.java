@@ -3,23 +3,20 @@ package Sprint.Commands;
 import Sprint.Database.DataAccessObject;
 import Sprint.Database.HibernateUtil;
 import Sprint.model.Project;
-import Sprint.model.User;
 import Sprint.model.Zadanie;
-import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class FindZadanie2 implements Command{
+public class FindZadanieInProject implements Command{
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
     @Override
     public String getCommand() {
-        return "4";
+        return "Znajdz zadania w projekcie";
     }
 
-    public FindZadanie2() {
+    public FindZadanieInProject() {
         this.daoProject = daoProject;
     }
 

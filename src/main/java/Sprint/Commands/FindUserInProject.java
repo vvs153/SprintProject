@@ -15,7 +15,7 @@ public class FindUserInProject implements Command{
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
     @Override
     public String getCommand() {
-        return "6";
+        return "Znajdz uzytkownikow w projekcie";
     }
 
     public FindUserInProject() {

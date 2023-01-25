@@ -2,23 +2,18 @@ package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
 import Sprint.Database.HibernateUtil;
-import Sprint.model.Project;
-import Sprint.model.Sprint;
 import Sprint.model.User;
 import Sprint.model.Zadanie;
-import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class FindUsersZadanie2 implements Command{
+public class FindUsersInZadanie implements Command{
     private DataAccessObject<User> daoUser = new DataAccessObject<>();
     @Override
     public String getCommand() {
-        return "2";
+        return "Znajdz zadania uzytkownika";
     }
 
     @Override

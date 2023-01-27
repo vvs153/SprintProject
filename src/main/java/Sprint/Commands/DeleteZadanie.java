@@ -13,7 +13,7 @@ public class DeleteZadanie implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id usuwanego zadania");
+        System.out.println("Podaj id usuwanego zadania:");
         String id = scanner.nextLine();
         Long zadanieId = Long.parseLong(id);
         if(dao.delete(Zadanie.class,zadanieId)){

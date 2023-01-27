@@ -13,7 +13,7 @@ public class DeleteProject implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id usuwanego projektu");
+        System.out.println("Podaj id usuwanego projektu:");
         String id = scanner.nextLine();
         Long projectId = Long.parseLong(id);
         if(dao.delete(Project.class,projectId)){

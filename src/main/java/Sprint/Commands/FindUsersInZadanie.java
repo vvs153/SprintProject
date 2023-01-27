@@ -18,12 +18,12 @@ public class FindUsersInZadanie implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id uzytkownika");
+        System.out.println("Podaj id uzytkownika:");
         String id = scanner.nextLine();
         Long userId = Long.parseLong(id);
         Optional<User> optionalUser = daoUser.find(User.class, userId);
         if(optionalUser.isEmpty()){
-            System.err.println("Id uzytkownika nie istnieje!");
+            System.err.println("Uzytkownik o podanym id nie istnieje!");
             return;
         }
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {

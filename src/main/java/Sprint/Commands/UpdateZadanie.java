@@ -24,14 +24,14 @@ public class UpdateZadanie implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id zadania");
+        System.out.println("Podaj id zadania:");
         String idZadanie = Command.scanner.nextLine();
         Long id = Long.parseLong(idZadanie);
         if(!daoZadanie.exists(Zadanie.class,id)){
-            System.err.println("Nie ma zadania o takim id!");
+            System.err.println("Zadanie o podanym id nie istnieje!");
             return;
         }
-        System.out.println("Podaj id uzytkownika");
+        System.out.println("Podaj id uzytkownika:");
         String idUserString = Command.scanner.nextLine();
         Long idUser = Long.parseLong(idUserString);
         Optional<User> userOptional = daoUser.find(User.class, idUser);
@@ -39,7 +39,7 @@ public class UpdateZadanie implements Command{
             System.err.println("Uzytkownik o podanym id nie istnieje!");
             return;
         }
-        System.out.println("Podaj id projektu");
+        System.out.println("Podaj id projektu:");
         String idProjectString = Command.scanner.nextLine();
         Long idProject = Long.parseLong(idProjectString);
         Optional<Project> projectOptional = daoProject.find(Project.class, idProject);

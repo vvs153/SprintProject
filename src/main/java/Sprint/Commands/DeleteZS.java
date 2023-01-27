@@ -18,11 +18,11 @@ public class DeleteZS implements Command {
     public void service() {
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
-            System.out.println("Podaj id zadania");
+            System.out.println("Podaj id zadania:");
             Long id = scanner.nextLong();
             Zadanie zadanie = session.get(Zadanie.class, id);
             if (zadanie == null) {
-                System.out.println("Nie ma takiego zadania!");
+                System.out.println("Zadanie o podanym id nie istnieje!");
                 return;
             }
             if(!zadanie.getSprintSet().isEmpty()){

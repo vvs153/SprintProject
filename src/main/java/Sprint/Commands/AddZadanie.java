@@ -32,21 +32,21 @@ public class AddZadanie implements Command{
         System.out.println("Podaj opis zadania:");
         String desc = Command.scanner.nextLine();
 
-        System.out.println("Podaj id uzytkownika");
+        System.out.println("Podaj id uzytkownika:");
         String idString = Command.scanner.nextLine();
         Long id = Long.parseLong(idString);
         Optional<User> optionalUser = daoUser.find(User.class, id);
         if(optionalUser.isEmpty()){
-            System.err.println("Id uzytkownika nie istnieje!");
+            System.err.println("Uzytkownik o podanym id nie istnieje!");
             return;
         }
 
-        System.out.println("Podaj id projektu");
+        System.out.println("Podaj id projektu:");
         String idString2 = Command.scanner.nextLine();
         Long projectId = Long.parseLong(idString2);
         Optional<Project> optionalProject = daoProject.find(Project.class, projectId);
         if(optionalProject.isEmpty()){
-            System.err.println("Id projektu nie istnieje!");
+            System.err.println("Projekt o podanym id nie istnieje!");
             return;
         }
         System.out.println("Podaj wage zadania:");

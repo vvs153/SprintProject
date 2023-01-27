@@ -23,14 +23,14 @@ public class UpdateSprint implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id sprintu");
+        System.out.println("Podaj id sprintu:");
         String idSprint = Command.scanner.nextLine();
         Long id = Long.parseLong(idSprint);
         if(!daoSprint.exists(Sprint.class,id)){
-            System.err.println("Nie ma sprintu o takim id!");
+            System.err.println("Sprint o podanym id nie istnieje!");
             return;
         }
-        System.out.println("Podaj id zadania");
+        System.out.println("Podaj id zadania:");
         String idZadanieString = Command.scanner.nextLine();
         Long idZadanie = Long.parseLong(idZadanieString);
         Optional<Zadanie> zadanieOptional = daoZadanie.find(Zadanie.class, idZadanie);

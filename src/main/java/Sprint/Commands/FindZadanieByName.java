@@ -19,7 +19,7 @@ public class FindZadanieByName implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj nazwe zadania");
+        System.out.println("Podaj nazwe zadania:");
         String zadanieName = scanner.nextLine();
         List<Zadanie> zadania = dao.findAll(Zadanie.class);
         System.out.println("Zadania o nazwie: " + zadanieName);

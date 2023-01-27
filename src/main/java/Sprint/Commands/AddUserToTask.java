@@ -4,19 +4,16 @@ import Sprint.Database.DataAccessObject;
 import Sprint.Database.HibernateUtil;
 import Sprint.model.Project;
 import Sprint.model.User;
-import Sprint.model.Zadanie;
 import org.hibernate.Session;
 
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.regex.Pattern;
 
-public class AddUserdoZadania implements Command{
+public class AddUserToTask implements Command{
     private DataAccessObject<User> dao = new DataAccessObject<>();
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
 
-    public AddUserdoZadania() {
+    public AddUserToTask() {
         this.dao = dao;
         this.daoProject = daoProject;
     }
@@ -28,20 +25,20 @@ public class AddUserdoZadania implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id uzytkownika");
+        System.out.println("Podaj id uzytkownika:");
         String idString = Command.scanner.nextLine();
         Long id = Long.parseLong(idString);
         Optional<User> optionalUser = dao.find(User.class, id);
         if(optionalUser.isEmpty()){
-            System.err.println("Id uzytkownika nie istnieje!");
+            System.err.println("Uzytkownik o podanym id nie istnieje!");
             return;
         }
-        System.out.println("Podaj id projektu");
+        System.out.println("Podaj id projektu:");
         String idProjectString = Command.scanner.nextLine();
         Long idProject = Long.parseLong(idProjectString);
         Optional<Project> optionalProject = daoProject.find(Project.class, idProject);
         if(optionalProject.isEmpty()){
-            System.err.println("Id projektu nie istnieje!");
+            System.err.println("Projekt o podanym id nie istnieje!");
             return;
         }
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {

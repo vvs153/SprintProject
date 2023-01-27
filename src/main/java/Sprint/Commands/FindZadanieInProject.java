@@ -22,12 +22,12 @@ public class FindZadanieInProject implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id projektu");
+        System.out.println("Podaj id projektu:");
         String id = scanner.nextLine();
         Long projectId = Long.parseLong(id);
         Optional<Project> optionalProject = daoProject.find(Project.class, projectId);
         if(optionalProject.isEmpty()){
-            System.err.println("Id projektu nie istnieje!");
+            System.err.println("Projekt o podanym id nie istnieje!");
             return;
         }
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {

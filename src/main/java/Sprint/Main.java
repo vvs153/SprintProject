@@ -16,48 +16,33 @@ public class Main {
     public static void main(String[] args) {
        // new DataAccessObject<Project>().findAll(Project.class);
         List<Command> commandList = List.of(
-                new AddProject(),
-                new AddSprint(),
-                new AddUser(),
-                new AddZadanie(),
-                new AddUserdoZadania(),
-                new ListProject(),
-                new ListSprint(),
-                new ListUser(),
-                new ListZadanie(),
-                new DeleteProject(),
-                new DeleteSprint(),
-                new DeleteUser(),
-                new DeleteZadanie(),
-                new DeleteZS(),
-                new UpdateProject(),
-                new UpdateSprint(),
-                new UpdateUser(),
-                new UpdateZadanie(),
-                new FindUsersInZadanie(),
-                new FindZadanieByName(),
-                new FindZadanieInProject(),
-                new FindSprintInProject(),
-                new FindUserInProject(),
-                new DeletePZS()
+                new Update(),
+                new Add(),
+                new Lists(),
+                new Delete(),
+                new Find()
+
         );
+        display(commandList,"exit","wyjdz");
+    }
+    public static void display(List<Command> list, String e1,String e2){
         String command;
         do {
             System.out.println(ANSI_RED+"\nAplikacja do zarzadzania projektami\n"+ANSI_RESET);
             System.out.println(ANSI_CYAN+"Lista dostepnych komand: ");
-            for (int i = 0; i < commandList.size(); i++) {
-                System.out.println((i + 1) + ". " + commandList.get(i).getCommand());
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println((i + 1) + ". " + list.get(i).getCommand());
             }
             System.out.println(ANSI_RESET);
 
             System.out.println(ANSI_BLUE+"Podaj komende"+ANSI_RESET);
             command = Command.scanner.nextLine();
 
-            for (Command availableCommand : commandList) {
+            for (Command availableCommand : list) {
                 if (availableCommand.getCommand().equalsIgnoreCase(command)) {
                     availableCommand.service();
                 }
             }
-        } while (!command.equalsIgnoreCase("exit")&&!command.equalsIgnoreCase("wyjdz"));
+        } while (!command.equalsIgnoreCase(e1)&&!command.equalsIgnoreCase(e2));
     }
 }

@@ -27,7 +27,7 @@ public class UpdateProject implements Command{
     @Override
     public void service() {
 
-        System.out.println("Podaj id projektu");
+        System.out.println("Podaj id projektu:");
         String idProjectString = Command.scanner.nextLine();
         Long idProject = Long.parseLong(idProjectString);
         Optional<Project> projectOptional = daoProject.find(Project.class, idProject);

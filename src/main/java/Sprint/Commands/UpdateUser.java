@@ -27,7 +27,7 @@ public class UpdateUser implements Command{
     @Override
     public void service() {
 
-        System.out.println("Podaj id uzytkownika");
+        System.out.println("Podaj id uzytkownika:");
         String idUserString = Command.scanner.nextLine();
         Long idUser = Long.parseLong(idUserString);
         Optional<User> userOptional = daoUser.find(User.class, idUser);

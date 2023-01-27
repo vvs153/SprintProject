@@ -12,7 +12,7 @@ public class DeleteSprint implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id usuwanego sprintu");
+        System.out.println("Podaj id usuwanego sprintu:");
         String id = scanner.nextLine();
         Long sprintId = Long.parseLong(id);
         if(dao.delete(Sprint.class,sprintId)){

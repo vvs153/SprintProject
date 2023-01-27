@@ -30,7 +30,7 @@ public class AddSprint implements Command{
 
         Optional<Zadanie> optionalZadanie = dao.find(Zadanie.class, idZadanie);
         if(optionalZadanie.isEmpty()){
-            System.err.println("Id zadania nie istnieje!");
+            System.err.println("Zadanie o podanym id nie istnieje!");
             return;
         }
         System.out.println("Podaj poczatek sprintu (YYYY-MM-DD):");

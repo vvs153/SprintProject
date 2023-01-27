@@ -13,7 +13,7 @@ public class DeleteUser implements Command{
 
     @Override
     public void service() {
-        System.out.println("Podaj id usuwanego uzytkownika");
+        System.out.println("Podaj id usuwanego uzytkownika:");
         String id = scanner.nextLine();
         Long userId = Long.parseLong(id);
         if(dao.delete(User.class,userId)){

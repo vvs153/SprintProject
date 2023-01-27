@@ -4,20 +4,19 @@ import java.util.List;
 
 import static Sprint.Main.*;
 
-public class Add implements Command{
+public class Update implements Command{
     @Override
     public String getCommand() {
-        return "Dodaj";
+        return "Aktualizuj";
     }
 
     @Override
     public void service() {
         List<Command> commandList = List.of(
-                new AddProject(),
-                new AddSprint(),
-                new AddUser(),
-                new AddZadanie(),
-                new AddUserToTask()
+                new UpdateProject(),
+                new UpdateSprint(),
+                new UpdateUser(),
+                new UpdateZadanie()
 
         );
         display(commandList,"return", "wroc");

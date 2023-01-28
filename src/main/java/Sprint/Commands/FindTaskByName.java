@@ -1,14 +1,14 @@
 package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.util.List;
 
-public class FindZadanieByName implements Command{
-    private DataAccessObject<Zadanie> dao;
+public class FindTaskByName implements Command{
+    private DataAccessObject<Task> dao;
 
-    public FindZadanieByName() {
+    public FindTaskByName() {
         this.dao = new DataAccessObject<>();;
     }
 
@@ -21,7 +21,7 @@ public class FindZadanieByName implements Command{
     public void service() {
         System.out.println("Podaj nazwe zadania:");
         String zadanieName = scanner.nextLine();
-        List<Zadanie> zadania = dao.findAll(Zadanie.class);
+        List<Task> zadania = dao.findAll(Task.class);
         System.out.println("Zadania o nazwie: " + zadanieName);
         zadania.stream().filter(zadanie -> zadanie.getNazwa().equalsIgnoreCase(zadanieName)).forEach(System.out::println);
             }

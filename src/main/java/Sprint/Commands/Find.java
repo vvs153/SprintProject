@@ -13,13 +13,12 @@ public class Find implements Command{
     @Override
     public void service() {
         List<Command> commandList = List.of(
-                new FindUsersInZadanie(),
-                new FindZadanieByName(),
-                new FindZadanieInProject(),
                 new FindSprintInProject(),
+                new FindTaskByName(),
+                new FindTaskInProject(),
                 new FindUserInProject(),
-                new FindZadanieByProgress()
-
+                new FindTaskByProgress(),
+                new FindUsersInTask()
         );
         display(commandList,"return", "wroc");
     }

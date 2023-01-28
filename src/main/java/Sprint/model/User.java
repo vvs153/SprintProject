@@ -24,7 +24,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Zadanie> zadanieSet;
+    private Set<Task> taskSet;
     @ManyToMany
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

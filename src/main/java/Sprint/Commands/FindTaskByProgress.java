@@ -1,14 +1,14 @@
 package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.util.List;
 
-public class FindZadanieByProgress implements Command{
-    private DataAccessObject<Zadanie> dao;
+public class FindTaskByProgress implements Command{
+    private DataAccessObject<Task> dao;
 
-    public FindZadanieByProgress() {
+    public FindTaskByProgress() {
         this.dao = new DataAccessObject<>();;
     }
 
@@ -21,7 +21,7 @@ public class FindZadanieByProgress implements Command{
     public void service() {
         System.out.println("Podaj status zadania:");
         String zadanieStatus = scanner.nextLine();
-        List<Zadanie> zadania = dao.findAll(Zadanie.class);
+        List<Task> zadania = dao.findAll(Task.class);
         System.out.println("Zadania o statusie: " + zadanieStatus);
         zadania.stream().filter(zadanie -> zadanie.getProgress().toString().equalsIgnoreCase(zadanieStatus)).forEach(System.out::println);
             }

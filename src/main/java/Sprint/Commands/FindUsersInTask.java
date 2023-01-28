@@ -3,13 +3,13 @@ package Sprint.Commands;
 import Sprint.Database.DataAccessObject;
 import Sprint.Database.HibernateUtil;
 import Sprint.model.User;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 import org.hibernate.Session;
 
 import java.util.Optional;
 import java.util.Set;
 
-public class FindUsersInZadanie implements Command{
+public class FindUsersInTask implements Command{
     private DataAccessObject<User> daoUser = new DataAccessObject<>();
     @Override
     public String getCommand() {
@@ -28,7 +28,7 @@ public class FindUsersInZadanie implements Command{
         }
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
             User user = session.get(User.class, userId);
-            Set<Zadanie> zadania = user.getZadanieSet();
+            Set<Task> zadania = user.getTaskSet();
             System.out.println("Lista zadan uzytkownika o id: " + id);
             zadania.forEach(System.out::println);
             }

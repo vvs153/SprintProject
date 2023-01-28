@@ -4,11 +4,11 @@ import Sprint.Database.HibernateUtil;
 import Sprint.model.Project;
 import Sprint.model.Sprint;
 import Sprint.model.User;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class DeletePZS implements Command {
+public class DeletePST implements Command {
 
     @Override
     public String getCommand() {
@@ -27,14 +27,14 @@ public class DeletePZS implements Command {
                 return;
             }
             if(!project.getUsers().isEmpty()){
-                if(!project.getZadanie2Set().isEmpty()){
-                    if(!project.getZadanie2Set().stream().flatMap(zadanie -> zadanie.getSprintSet().stream()).toList().isEmpty()){
-                        for (Sprint sprint: project.getZadanie2Set().stream().flatMap(zadanie -> zadanie.getSprintSet().stream()).toList()) {
+                if(!project.getTask2Set().isEmpty()){
+                    if(!project.getTask2Set().stream().flatMap(zadanie -> zadanie.getSprintSet().stream()).toList().isEmpty()){
+                        for (Sprint sprint: project.getTask2Set().stream().flatMap(zadanie -> zadanie.getSprintSet().stream()).toList()) {
                             session.remove(sprint);
                         }
                     }
-                    for (Zadanie zadanie: project.getZadanie2Set()){
-                        session.remove(zadanie);
+                    for (Task task : project.getTask2Set()){
+                        session.remove(task);
                     }
                 } for (User user: project.getUsers()){
                     session.remove(user);

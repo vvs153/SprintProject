@@ -21,6 +21,6 @@ public class Sprint {
     @ManyToOne
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Zadanie zadanie;
+    private Task task;
 
 }

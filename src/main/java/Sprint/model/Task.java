@@ -10,7 +10,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Zadanie {
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,7 +33,7 @@ public class Zadanie {
     @EqualsAndHashCode.Exclude
     private Project project;
 
-    @OneToMany(mappedBy = "zadanie")
+    @OneToMany(mappedBy = "task")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Sprint> sprintSet;

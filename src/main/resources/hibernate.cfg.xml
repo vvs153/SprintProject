@@ -12,6 +12,6 @@
         <mapping class = "Sprint.model.Project"/>
         <mapping class = "Sprint.model.Sprint"/>
         <mapping class = "Sprint.model.User"/>
-        <mapping class = "Sprint.model.Zadanie"/>
+        <mapping class = "Sprint.model.Task"/>
     </session-factory>
 </hibernate-configuration>

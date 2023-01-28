@@ -16,7 +16,7 @@ public class Update implements Command{
                 new UpdateProject(),
                 new UpdateSprint(),
                 new UpdateUser(),
-                new UpdateZadanie()
+                new UpdateTask()
 
         );
         display(commandList,"return", "wroc");

@@ -9,11 +9,11 @@ import org.hibernate.Session;
 import java.util.Optional;
 import java.util.Set;
 
-public class AddUserToTask implements Command{
+public class AddUserToProject implements Command{
     private DataAccessObject<User> dao = new DataAccessObject<>();
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
 
-    public AddUserToTask() {
+    public AddUserToProject() {
         this.dao = dao;
         this.daoProject = daoProject;
     }

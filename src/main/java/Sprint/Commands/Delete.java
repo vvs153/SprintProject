@@ -16,9 +16,9 @@ public class Delete implements Command{
                 new DeleteProject(),
                 new DeleteSprint(),
                 new DeleteUser(),
-                new DeleteZadanie(),
-                new DeleteZS(),
-                new DeletePZS()
+                new DeleteTask(),
+                new DeleteTaskAndSprint(),
+                new DeletePST()
 
         );
         display(commandList,"return", "wroc");

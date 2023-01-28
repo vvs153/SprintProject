@@ -1,14 +1,13 @@
 package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
-import Sprint.model.Project;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.util.List;
 
-public class ListZadanie implements Command {
-    private DataAccessObject<Zadanie> dao;
-    public ListZadanie(){
+public class ListTask implements Command {
+    private DataAccessObject<Task> dao;
+    public ListTask(){
         this.dao = new DataAccessObject<>();
     }
     @Override
@@ -18,7 +17,7 @@ public class ListZadanie implements Command {
 
     @Override
     public void service() {
-        List<Zadanie> zadania = dao.findAll(Zadanie.class);
+        List<Task> zadania = dao.findAll(Task.class);
         zadania.forEach(System.out::println);
     }
 }

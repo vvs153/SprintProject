@@ -3,20 +3,20 @@ package Sprint.Commands;
 import Sprint.Database.DataAccessObject;
 import Sprint.Database.HibernateUtil;
 import Sprint.model.Project;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 import org.hibernate.Session;
 
 import java.util.Optional;
 import java.util.Set;
 
-public class FindZadanieInProject implements Command{
+public class FindTaskInProject implements Command{
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
     @Override
     public String getCommand() {
         return "Znajdz zadania w projekcie";
     }
 
-    public FindZadanieInProject() {
+    public FindTaskInProject() {
         this.daoProject = daoProject;
     }
 
@@ -32,7 +32,7 @@ public class FindZadanieInProject implements Command{
         }
         try (Session session = HibernateUtil.INSTANCE.getSessionFactory().openSession()) {
             Project project = session.get(Project.class, projectId);
-            Set<Zadanie> zadania = project.getZadanie2Set();
+            Set<Task> zadania = project.getTask2Set();
             System.out.println("Lista zadan w projekcie o id: " + id);
             zadania.forEach(System.out::println);
         }

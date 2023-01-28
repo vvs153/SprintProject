@@ -1,15 +1,14 @@
 package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
-import Sprint.model.Progress;
 import Sprint.model.Sprint;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
 public class AddSprint implements Command{
-    private DataAccessObject<Zadanie> dao = new DataAccessObject<>();
+    private DataAccessObject<Task> dao = new DataAccessObject<>();
     private DataAccessObject<Sprint> daoSprint = new DataAccessObject<>();
 
     public AddSprint() {
@@ -28,7 +27,7 @@ public class AddSprint implements Command{
         String idString = Command.scanner.nextLine();
         Long idZadanie = Long.parseLong(idString);
 
-        Optional<Zadanie> optionalZadanie = dao.find(Zadanie.class, idZadanie);
+        Optional<Task> optionalZadanie = dao.find(Task.class, idZadanie);
         if(optionalZadanie.isEmpty()){
             System.err.println("Zadanie o podanym id nie istnieje!");
             return;
@@ -48,7 +47,7 @@ public class AddSprint implements Command{
         int points = Integer.parseInt(pointsString);
 
         Sprint sprint = Sprint.builder()
-                .zadanie(optionalZadanie.get())
+                .task(optionalZadanie.get())
                 .poczatek(startDate)
                 .koniec(endDate)
                 .sprintPoints(points)

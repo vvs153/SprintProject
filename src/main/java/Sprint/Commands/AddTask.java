@@ -4,16 +4,16 @@ import Sprint.Database.DataAccessObject;
 import Sprint.model.Progress;
 import Sprint.model.Project;
 import Sprint.model.User;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.util.Optional;
 
-public class AddZadanie implements Command{
-    private DataAccessObject<Zadanie> dao = new DataAccessObject<>();
+public class AddTask implements Command{
+    private DataAccessObject<Task> dao = new DataAccessObject<>();
     private DataAccessObject<User> daoUser = new DataAccessObject<>();
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
 
-    public AddZadanie() {
+    public AddTask() {
         this.dao = dao;
         this.daoUser = daoUser;
         this.daoProject = daoProject;
@@ -59,7 +59,7 @@ public class AddZadanie implements Command{
         String progressString = scanner.nextLine().toUpperCase();
         Progress progress = Progress.valueOf(progressString);
 
-        Zadanie zadanie = Zadanie.builder()
+        Task task = Task.builder()
                 .nazwa(name)
                 .opis(desc)
                 .project(optionalProject.get())
@@ -69,6 +69,6 @@ public class AddZadanie implements Command{
                 .progress(progress)
                 .build();
 
-        dao.insert(zadanie);
+        dao.insert(task);
     }
 }

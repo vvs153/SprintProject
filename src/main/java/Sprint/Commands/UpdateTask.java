@@ -3,15 +3,14 @@ package Sprint.Commands;
 import Sprint.Database.DataAccessObject;
 import Sprint.model.*;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
-public class UpdateZadanie implements Command{
+public class UpdateTask implements Command{
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
     private DataAccessObject<User> daoUser = new DataAccessObject<>();
-    private DataAccessObject<Zadanie> daoZadanie = new DataAccessObject<>();
+    private DataAccessObject<Task> daoZadanie = new DataAccessObject<>();
 
-    public UpdateZadanie() {
+    public UpdateTask() {
         this.daoProject = daoProject;
         this.daoUser = daoUser;
         this.daoZadanie = daoZadanie;
@@ -27,7 +26,7 @@ public class UpdateZadanie implements Command{
         System.out.println("Podaj id zadania:");
         String idZadanie = Command.scanner.nextLine();
         Long id = Long.parseLong(idZadanie);
-        if(!daoZadanie.exists(Zadanie.class,id)){
+        if(!daoZadanie.exists(Task.class,id)){
             System.err.println("Zadanie o podanym id nie istnieje!");
             return;
         }
@@ -61,7 +60,7 @@ public class UpdateZadanie implements Command{
         String progressString = scanner.nextLine().toUpperCase();
         Progress progress = Progress.valueOf(progressString);
 
-        Zadanie zadanie = Zadanie.builder()
+        Task task = Task.builder()
                 .id(id)
                 .project(projectOptional.get())
                 .user(userOptional.get())
@@ -71,6 +70,6 @@ public class UpdateZadanie implements Command{
                 .points(points)
                 .progress(progress)
                 .build();
-        daoZadanie.update(Zadanie.class,id,zadanie);
+        daoZadanie.update(Task.class,id, task);
     }
 }

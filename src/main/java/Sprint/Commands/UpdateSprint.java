@@ -2,14 +2,14 @@ package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
 import Sprint.model.Sprint;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
 public class UpdateSprint implements Command{
     private DataAccessObject<Sprint> daoSprint = new DataAccessObject<>();
-    private DataAccessObject<Zadanie> daoZadanie = new DataAccessObject<>();
+    private DataAccessObject<Task> daoZadanie = new DataAccessObject<>();
 
     public UpdateSprint() {
         this.daoSprint = daoSprint;
@@ -33,7 +33,7 @@ public class UpdateSprint implements Command{
         System.out.println("Podaj id zadania:");
         String idZadanieString = Command.scanner.nextLine();
         Long idZadanie = Long.parseLong(idZadanieString);
-        Optional<Zadanie> zadanieOptional = daoZadanie.find(Zadanie.class, idZadanie);
+        Optional<Task> zadanieOptional = daoZadanie.find(Task.class, idZadanie);
         if (zadanieOptional.isEmpty()) {
             System.err.println("Zadanie o podanym id nie istnieje!");
             return;
@@ -54,7 +54,7 @@ public class UpdateSprint implements Command{
 
         Sprint sprint = Sprint.builder()
                 .id(id)
-                .zadanie(zadanieOptional.get())
+                .task(zadanieOptional.get())
                 .poczatek(startDate)
                 .koniec(endDate)
                 .sprintPoints(points)

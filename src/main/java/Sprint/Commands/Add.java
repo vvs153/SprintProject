@@ -16,8 +16,8 @@ public class Add implements Command{
                 new AddProject(),
                 new AddSprint(),
                 new AddUser(),
-                new AddZadanie(),
-                new AddUserToTask()
+                new AddTask(),
+                new AddUserToProject()
 
         );
         display(commandList,"return", "wroc");

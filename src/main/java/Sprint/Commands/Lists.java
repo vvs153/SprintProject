@@ -16,7 +16,7 @@ public class Lists implements Command{
                 new ListProject(),
                 new ListSprint(),
                 new ListUser(),
-                new ListZadanie()
+                new ListTask()
 
         );
         display(commandList,"return", "wroc");

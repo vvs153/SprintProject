@@ -1,17 +1,16 @@
 package Sprint.Commands;
 
 import Sprint.Database.DataAccessObject;
-import Sprint.model.Progress;
 import Sprint.model.Project;
 import Sprint.model.User;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 
 import java.util.Optional;
 
 public class UpdateProject implements Command{
     private DataAccessObject<Project> daoProject = new DataAccessObject<>();
     private DataAccessObject<User> daoUser = new DataAccessObject<>();
-    private DataAccessObject<Zadanie> daoZadanie = new DataAccessObject<>();
+    private DataAccessObject<Task> daoZadanie = new DataAccessObject<>();
 
     public UpdateProject() {
         this.daoProject = daoProject;

@@ -1,13 +1,12 @@
 package Sprint.Commands;
 
-import Sprint.Database.DataAccessObject;
 import Sprint.Database.HibernateUtil;
 import Sprint.model.Sprint;
-import Sprint.model.Zadanie;
+import Sprint.model.Task;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class DeleteZS implements Command {
+public class DeleteTaskAndSprint implements Command {
 
     @Override
     public String getCommand() {
@@ -20,16 +19,16 @@ public class DeleteZS implements Command {
             Transaction transaction = session.beginTransaction();
             System.out.println("Podaj id zadania:");
             Long id = scanner.nextLong();
-            Zadanie zadanie = session.get(Zadanie.class, id);
-            if (zadanie == null) {
+            Task task = session.get(Task.class, id);
+            if (task == null) {
                 System.out.println("Zadanie o podanym id nie istnieje!");
                 return;
             }
-            if(!zadanie.getSprintSet().isEmpty()){
-                    for (Sprint sprint: zadanie.getSprintSet()) {
+            if(!task.getSprintSet().isEmpty()){
+                    for (Sprint sprint: task.getSprintSet()) {
                         session.remove(sprint);
                     }
-                } session.remove(zadanie);
+                } session.remove(task);
                 transaction.commit();
             System.out.println("Usunieto zadania wraz z sprintami!");
 

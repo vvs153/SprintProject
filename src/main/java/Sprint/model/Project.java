@@ -22,7 +22,7 @@ public class Project {
     @OneToMany(mappedBy = "project")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Set<Zadanie> zadanie2Set;
+    private Set<Task> task2Set;
 
     @ManyToMany(mappedBy = "projects")
     @ToString.Exclude
